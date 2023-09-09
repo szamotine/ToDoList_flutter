@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../components/constants.dart';
+import '../custom_widgets/task_list.dart';
 
 class TaskScreen extends StatelessWidget {
-  const TaskScreen({super.key});
+  TaskScreen({super.key});
+
+  late Map<String, bool> list = Map.fromIterable(toDoList, key: (item) => item, value: (item) => false);
+
+  late List<String> toDoList = [
+    'Buy Milk',
+    'Buy Eggs',
+    'Buy Bread',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +61,10 @@ class TaskScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 5, 10, 5),
+                  child: TaskList(toDoList: toDoList, list: list),
                 ),
               ),
             )

@@ -11,3 +11,14 @@ const kToDoSubTitleTextStyle = TextStyle(
   color: Colors.white,
   fontWeight: FontWeight.w700,
 );
+
+const kTaskListTextStyle = TextStyle(
+  fontSize: 18,
+  color: Colors.black,
+);
+
+const kTaskListStrikeThroughTextStyle = TextStyle(
+  fontSize: 18,
+  color: Colors.black,
+  decoration: TextDecoration.lineThrough,
+);
