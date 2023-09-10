@@ -22,3 +22,8 @@ const kTaskListStrikeThroughTextStyle = TextStyle(
   color: Colors.black,
   decoration: TextDecoration.lineThrough,
 );
+
+const kTaskListAddTaskTextStyle = TextStyle(
+  fontSize: 40,
+  color: Colors.lightBlueAccent,
+);

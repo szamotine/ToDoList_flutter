@@ -20,7 +20,7 @@ class _TaskListState extends State<TaskList> {
   Widget build(BuildContext context) {
     return ListView.builder(
         itemCount: widget.toDoList.length,
-        itemBuilder: (Buildcontext, int index) {
+        itemBuilder: (BuildContext buildContext, int index) {
           return CheckboxListTile(
             title: Text(
               widget.toDoList[index],
@@ -30,7 +30,6 @@ class _TaskListState extends State<TaskList> {
             onChanged: (bool? value) {
               if (value != null) {
                 setState(() {
-                  print('Changing value to $value');
                   widget.list[widget.toDoList[index]] = value;
                 });
               }

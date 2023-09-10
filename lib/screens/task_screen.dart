@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_list/screens/add_task_screen.dart';
 
 import '../components/constants.dart';
 import '../custom_widgets/task_list.dart';
@@ -18,7 +19,18 @@ class TaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            isScrollControlled: true,
+            context: context,
+            builder: (context) => SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: AddTaskScreen(),
+              ),
+            ),
+          );
+        },
         backgroundColor: Colors.lightBlueAccent,
         child: Icon(Icons.add),
       ),
@@ -45,11 +57,11 @@ class TaskScreen extends StatelessWidget {
                     height: 10,
                   ),
                   Text(
-                    'To do',
+                    'To do list',
                     style: kToDoTitleTextStyle,
                   ),
                   Text(
-                    '12 tasks',
+                    '${toDoList.length} tasks',
                     style: kToDoSubTitleTextStyle,
                   ),
                 ],
