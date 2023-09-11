@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../components/constants.dart';
+import '../components/task.dart';
 
 class TaskList extends StatefulWidget {
-  const TaskList({
-    super.key,
-    required this.toDoList,
-    required this.list,
-  });
+  TaskList({super.key, required this.taskList});
 
-  final List<String> toDoList;
-  final Map<String, bool> list;
+  late List<Task> taskList;
+
   @override
   State<TaskList> createState() => _TaskListState();
 }
@@ -19,18 +16,18 @@ class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: widget.toDoList.length,
+        itemCount: widget.taskList.length,
         itemBuilder: (BuildContext buildContext, int index) {
           return CheckboxListTile(
             title: Text(
-              widget.toDoList[index],
-              style: widget.list[widget.toDoList[index]]! ? kTaskListStrikeThroughTextStyle : kTaskListTextStyle,
+              widget.taskList[index].taskTitle,
+              style: widget.taskList[index].isDone ? kTaskListStrikeThroughTextStyle : kTaskListTextStyle,
             ),
-            value: widget.list[widget.toDoList[index]],
+            value: widget.taskList[index].isDone,
             onChanged: (bool? value) {
               if (value != null) {
                 setState(() {
-                  widget.list[widget.toDoList[index]] = value;
+                  widget.taskList[index].isDone = value;
                 });
               }
             },

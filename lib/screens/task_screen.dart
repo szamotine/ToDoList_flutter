@@ -2,18 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:to_do_list/screens/add_task_screen.dart';
 
 import '../components/constants.dart';
+import '../components/task.dart';
 import '../custom_widgets/task_list.dart';
 
 class TaskScreen extends StatelessWidget {
-  TaskScreen({super.key});
+  TaskScreen({super.key, required this.taskList});
 
-  late Map<String, bool> list = Map.fromIterable(toDoList, key: (item) => item, value: (item) => false);
-
-  late List<String> toDoList = [
-    'Buy Milk',
-    'Buy Eggs',
-    'Buy Bread',
-  ];
+  late List<Task> taskList;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +21,9 @@ class TaskScreen extends StatelessWidget {
             builder: (context) => SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen(),
+                child: AddTaskScreen(
+                  taskList: taskList,
+                ),
               ),
             ),
           );
@@ -61,7 +58,7 @@ class TaskScreen extends StatelessWidget {
                     style: kToDoTitleTextStyle,
                   ),
                   Text(
-                    '${toDoList.length} tasks',
+                    '${taskList.length} tasks',
                     style: kToDoSubTitleTextStyle,
                   ),
                 ],
@@ -76,7 +73,9 @@ class TaskScreen extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 5, 10, 5),
-                  child: TaskList(toDoList: toDoList, list: list),
+                  child: TaskList(
+                    taskList: taskList,
+                  ),
                 ),
               ),
             )
