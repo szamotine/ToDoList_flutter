@@ -4,20 +4,18 @@ import '../components/constants.dart';
 import '../components/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  AddTaskScreen({super.key, required this.taskList});
+  const AddTaskScreen({super.key, required this.listOfTasks});
 
-  late List<Task> taskList;
+  final ListOfTasks listOfTasks;
 
   @override
   Widget build(BuildContext context) {
     String taskToAdd = '';
 
     return Container(
-      // height: 400,
       color: Color(0xff757575),
       child: Container(
         padding: EdgeInsets.all(20),
-        // height: 200,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.vertical(
@@ -37,6 +35,7 @@ class AddTaskScreen extends StatelessWidget {
                 taskToAdd = value;
               },
               autofocus: true,
+              textCapitalization: TextCapitalization.words,
               textAlign: TextAlign.center,
               decoration: InputDecoration(
                 hintText: 'Add task here',
@@ -53,9 +52,8 @@ class AddTaskScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Task task = Task(taskTitle: taskToAdd);
-                taskList.add(task);
-                print('added ${task.taskTitle} to list');
+                final Task task = Task(taskTitle: taskToAdd);
+                listOfTasks.taskList.add(task);
               },
               child: Text('Add'),
             ),

@@ -3,12 +3,12 @@ import 'package:to_do_list/screens/add_task_screen.dart';
 
 import '../components/constants.dart';
 import '../components/task.dart';
-import '../custom_widgets/task_list.dart';
+import '../custom_widgets/tasks_list.dart';
 
 class TaskScreen extends StatelessWidget {
-  TaskScreen({super.key, required this.taskList});
+  const TaskScreen({super.key, required this.listOfTasks});
 
-  late List<Task> taskList;
+  final ListOfTasks listOfTasks;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class TaskScreen extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTaskScreen(
-                  taskList: taskList,
+                  listOfTasks: listOfTasks,
                 ),
               ),
             ),
@@ -58,7 +58,7 @@ class TaskScreen extends StatelessWidget {
                     style: kToDoTitleTextStyle,
                   ),
                   Text(
-                    '${taskList.length} tasks',
+                    '${listOfTasks.taskList.length} tasks',
                     style: kToDoSubTitleTextStyle,
                   ),
                 ],
@@ -73,9 +73,7 @@ class TaskScreen extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 5, 10, 5),
-                  child: TaskList(
-                    taskList: taskList,
-                  ),
+                  child: TasksList(),
                 ),
               ),
             )
