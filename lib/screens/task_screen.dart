@@ -3,12 +3,11 @@ import 'package:to_do_list/screens/add_task_screen.dart';
 
 import '../components/constants.dart';
 import '../custom_widgets/tasks_list.dart';
-import '../model/task.dart';
 
 class TaskScreen extends StatelessWidget {
-  const TaskScreen({super.key, required this.listOfTasks});
+  const TaskScreen({super.key});
 
-  final ListOfTasks listOfTasks;
+  // final ListOfTasks listOfTasks;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +20,7 @@ class TaskScreen extends StatelessWidget {
             builder: (context) => SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen(
-                  listOfTasks: listOfTasks,
-                ),
+                child: AddTaskScreen(),
               ),
             ),
           );
@@ -58,7 +55,7 @@ class TaskScreen extends StatelessWidget {
                     style: kToDoTitleTextStyle,
                   ),
                   Text(
-                    '${listOfTasks.taskList.length} tasks',
+                    '12 tasks',
                     style: kToDoSubTitleTextStyle,
                   ),
                 ],

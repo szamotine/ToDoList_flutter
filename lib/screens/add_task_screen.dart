@@ -4,9 +4,11 @@ import '../components/constants.dart';
 import '../model/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  const AddTaskScreen({super.key, required this.listOfTasks});
+  const AddTaskScreen({
+    super.key,
+  });
 
-  final ListOfTasks listOfTasks;
+  // final ListOfTasks listOfTasks;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +55,7 @@ class AddTaskScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 final Task task = Task(taskTitle: taskToAdd);
-                listOfTasks.taskList.add(task);
+                // listOfTasks.taskList.add(task);
               },
               child: Text('Add'),
             ),
