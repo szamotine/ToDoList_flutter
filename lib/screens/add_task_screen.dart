@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../components/constants.dart';
-import '../components/task.dart';
+import '../model/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({super.key, required this.listOfTasks});

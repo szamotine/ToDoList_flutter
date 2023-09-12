@@ -1,71 +1,60 @@
 import 'package:flutter/material.dart';
 
 import '../components/constants.dart';
+import '../model/task.dart';
 
-class TasksList extends StatelessWidget {
+class TasksList extends StatefulWidget {
   const TasksList({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        TaskTile(),
-        TaskTile(),
-        TaskTile(),
-      ],
-    );
-  }
+  State<TasksList> createState() => _TasksListState();
 }
 
-class TaskTile extends StatefulWidget {
-  const TaskTile({super.key});
+class _TasksListState extends State<TasksList> {
+  List<Task> tasks = [
+    Task(taskTitle: 'Buy Bread'),
+    Task(taskTitle: 'Buy Milk'),
+    Task(taskTitle: 'Buy Chicken'),
+  ];
 
   @override
-  State<TaskTile> createState() => _TaskTileState();
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: tasks.length,
+        itemBuilder: (BuildContext, int index) {
+          return TaskTile(
+            task: tasks[index],
+            checkboxCallback: (checkboxCallBack) {
+              setState(() {
+                tasks[index].toggleChecked();
+              });
+            },
+          );
+        });
+  }
 }
 
-class _TaskTileState extends State<TaskTile> {
-  bool isChecked = false;
+class TaskTile extends StatelessWidget {
+  const TaskTile({super.key, required this.task, required this.checkboxCallback});
 
-  dynamic checkboxCallBack(bool? checkboxState) {
-    setState(() {
-      isChecked = checkboxState!;
-    });
-  }
+  final Task task;
+
+  final Function(bool?) checkboxCallback;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(
-        'Task 1',
-        style: isChecked ? kTaskListStrikeThroughTextStyle : kTaskListTextStyle,
+        task.taskTitle,
+        style: task.isChecked ? kTaskListStrikeThroughTextStyle : kTaskListTextStyle,
       ),
-      trailing: TaskCheckBox(
-        checkBoxState: isChecked,
-        toggleCheckBoxState: checkboxCallBack,
+      trailing: Checkbox(
+        activeColor: Colors.lightBlueAccent,
+        value: task.isChecked,
+        onChanged: checkboxCallback,
       ),
-    );
-  }
-}
-
-class TaskCheckBox extends StatelessWidget {
-  const TaskCheckBox({
-    super.key,
-    required this.checkBoxState,
-    required this.toggleCheckBoxState,
-  });
-
-  final bool checkBoxState;
-  final Function(bool?) toggleCheckBoxState;
-
-  @override
-  Widget build(BuildContext context) {
-    return Checkbox(
-      activeColor: Colors.lightBlueAccent,
-      value: checkBoxState,
-      onChanged: toggleCheckBoxState,
     );
   }
 }

@@ -4,6 +4,10 @@ class Task {
 
   Task({required this.taskTitle, this.isChecked = false});
 
+  void toggleChecked() {
+    isChecked = !isChecked;
+  }
+
   @override
   bool operator ==(Object other) {
     Task temp;
@@ -12,13 +16,16 @@ class Task {
     } else {
       return false;
     }
-    return this.taskTitle == temp.taskTitle && this.isChecked == temp.taskTitle;
+    return taskTitle == temp.taskTitle && isChecked == temp.isChecked;
   }
 
   @override
   String toString() {
-    return this.taskTitle;
+    return taskTitle;
   }
+
+  @override
+  int get hashCode => super.hashCode;
 }
 
 class ListOfTasks {
