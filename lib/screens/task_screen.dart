@@ -3,11 +3,21 @@ import 'package:to_do_list/screens/add_task_screen.dart';
 
 import '../components/constants.dart';
 import '../custom_widgets/tasks_list.dart';
+import '../model/task.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
   const TaskScreen({super.key});
 
-  // final ListOfTasks listOfTasks;
+  @override
+  State<TaskScreen> createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  List<Task> tasks = [
+    Task(taskTitle: 'Buy Bread'),
+    Task(taskTitle: 'Buy Milk'),
+    Task(taskTitle: 'Buy Chicken'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +30,15 @@ class TaskScreen extends StatelessWidget {
             builder: (context) => SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen(),
+                child: AddTaskScreen(
+                  addTaskCallback: (taskToAdd) {
+                    setState(() {
+                      Task task = Task(taskTitle: taskToAdd);
+                      tasks.add(task);
+                      Navigator.pop(context);
+                    });
+                  },
+                ),
               ),
             ),
           );
@@ -55,7 +73,7 @@ class TaskScreen extends StatelessWidget {
                     style: kToDoTitleTextStyle,
                   ),
                   Text(
-                    '12 tasks',
+                    '${tasks.length} tasks',
                     style: kToDoSubTitleTextStyle,
                   ),
                 ],
@@ -70,7 +88,7 @@ class TaskScreen extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 5, 10, 5),
-                  child: TasksList(),
+                  child: TasksList(tasks: tasks),
                 ),
               ),
             )

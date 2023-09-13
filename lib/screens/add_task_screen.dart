@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../components/constants.dart';
-import '../model/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({
     super.key,
+    required this.addTaskCallback,
   });
+
+  final Function addTaskCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +54,12 @@ class AddTaskScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                final Task task = Task(taskTitle: taskToAdd);
+                addTaskCallback(taskToAdd);
               },
+              //     () {
+              //   final Task task = Task(taskTitle: taskToAdd);
+              // },
+
               child: Text('Add'),
             ),
           ],
