@@ -8,8 +8,6 @@ class AddTaskScreen extends StatelessWidget {
     super.key,
   });
 
-  // final ListOfTasks listOfTasks;
-
   @override
   Widget build(BuildContext context) {
     String taskToAdd = '';
@@ -55,7 +53,6 @@ class AddTaskScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 final Task task = Task(taskTitle: taskToAdd);
-                // listOfTasks.taskList.add(task);
               },
               child: Text('Add'),
             ),

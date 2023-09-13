@@ -27,17 +27,3 @@ class Task {
   @override
   int get hashCode => super.hashCode;
 }
-
-// class ListOfTasks {
-//   late List<Task> taskList = [];
-//
-//   void add(Task task) => taskList.add(task);
-//   void clear() => taskList.clear();
-//
-//   void removeChecked() => {
-//         for (var task in taskList)
-//           {
-//             if (task.isChecked) {taskList.remove(task)}
-//           }
-//       };
-// }
