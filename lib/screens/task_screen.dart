@@ -20,17 +20,7 @@ class TaskScreen extends StatelessWidget {
             builder: (context) => SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: AddTaskScreen(
-                  addTaskCallback: (taskToAdd) {
-                    // setState(
-                    //   () {
-                    //     Task task = Task(taskTitle: taskToAdd);
-                    //     //Provider.of<TaskData>(context, listen: false).add(task);
-                    //     Navigator.pop(context);
-                    //   },
-                    // );
-                  },
-                ),
+                child: const AddTaskScreen(),
               ),
             ),
           );
@@ -65,8 +55,26 @@ class TaskScreen extends StatelessWidget {
                     style: kToDoTitleTextStyle,
                   ),
                   Text(
-                    '${Provider.of<TaskData>(context).tasks.length} tasks',
+                    '${Provider.of<TaskData>(context).taskCount} tasks',
                     style: kToDoSubTitleTextStyle,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Provider.of<TaskData>(context, listen: false).removeCheckedTasks();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.grey,
+                          shape: StadiumBorder(side: BorderSide.none),
+                        ),
+                        child: const Text('Delete completed tasks'),
+                      ),
+                    ],
                   ),
                 ],
               ),
@@ -79,7 +87,7 @@ class TaskScreen extends StatelessWidget {
                   borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(20, 5, 10, 5),
+                  padding: const EdgeInsets.fromLTRB(10, 5, 50, 5),
                   child: TasksList(),
                 ),
               ),
