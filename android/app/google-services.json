@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "127991726627",
+    "project_id": "to-do-list-app-e612a",
+    "storage_bucket": "to-do-list-app-e612a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127991726627:android:ffce70d3c8af977db2a796",
+        "android_client_info": {
+          "package_name": "CoolCatsConsulting.app.to_do_list"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127991726627-iiupmdl3joplbsm8jqb6e6qpqhuol1ps.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "CoolCatsConsulting.app",
+            "certificate_hash": "983de69a5587d6c526dc013793d80d527c5b8465"
+          }
+        },
+        {
+          "client_id": "127991726627-ukelr4fi9q1lirdke8qofcqmdm3m5me1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQnuzkyK89BbBZioopwCeWpP1cGy-MNkQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127991726627-ukelr4fi9q1lirdke8qofcqmdm3m5me1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
