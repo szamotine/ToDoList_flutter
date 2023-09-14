@@ -8,6 +8,10 @@ void main() {
   runApp(const MyApp());
 }
 
+//Todo: Add firebase db functionality to store persistent data
+
+//Todo: Add functionality to store multiple lists
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
