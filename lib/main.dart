@@ -12,6 +12,10 @@ void main() {
 
 //Todo: Add functionality to store multiple lists
 
+//Todo: Add home page, login page
+
+//Todo: Add google login functionality
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
