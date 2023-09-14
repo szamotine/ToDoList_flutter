@@ -1,23 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:to_do_list/screens/add_task_screen.dart';
 
 import '../components/constants.dart';
 import '../custom_widgets/tasks_list.dart';
-import '../model/task.dart';
+import '../model/task_data.dart';
 
-class TaskScreen extends StatefulWidget {
+class TaskScreen extends StatelessWidget {
   const TaskScreen({super.key});
-
-  @override
-  State<TaskScreen> createState() => _TaskScreenState();
-}
-
-class _TaskScreenState extends State<TaskScreen> {
-  List<Task> tasks = [
-    Task(taskTitle: 'Buy Bread'),
-    Task(taskTitle: 'Buy Milk'),
-    Task(taskTitle: 'Buy Chicken'),
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +22,13 @@ class _TaskScreenState extends State<TaskScreen> {
                 padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTaskScreen(
                   addTaskCallback: (taskToAdd) {
-                    setState(
-                      () {
-                        Task task = Task(taskTitle: taskToAdd);
-                        tasks.add(task);
-                        Navigator.pop(context);
-                      },
-                    );
+                    // setState(
+                    //   () {
+                    //     Task task = Task(taskTitle: taskToAdd);
+                    //     //Provider.of<TaskData>(context, listen: false).add(task);
+                    //     Navigator.pop(context);
+                    //   },
+                    // );
                   },
                 ),
               ),
@@ -46,7 +36,7 @@ class _TaskScreenState extends State<TaskScreen> {
           );
         },
         backgroundColor: Colors.lightBlueAccent,
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       backgroundColor: Colors.lightBlueAccent,
       body: SafeArea(
@@ -54,11 +44,11 @@ class _TaskScreenState extends State<TaskScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(30, 60, 30, 30),
+              padding: const EdgeInsets.fromLTRB(30, 60, 30, 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     backgroundColor: Colors.white,
                     radius: 50,
                     child: Icon(
@@ -67,15 +57,15 @@ class _TaskScreenState extends State<TaskScreen> {
                       color: Colors.lightBlueAccent,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Text(
+                  const Text(
                     'To do list',
                     style: kToDoTitleTextStyle,
                   ),
                   Text(
-                    '${tasks.length} tasks',
+                    '${Provider.of<TaskData>(context).tasks.length} tasks',
                     style: kToDoSubTitleTextStyle,
                   ),
                 ],
@@ -84,13 +74,13 @@ class _TaskScreenState extends State<TaskScreen> {
             Expanded(
               child: Container(
                 height: 300,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 5, 10, 5),
-                  child: TasksList(tasks: tasks),
+                  padding: EdgeInsets.fromLTRB(20, 5, 10, 5),
+                  child: TasksList(),
                 ),
               ),
             )

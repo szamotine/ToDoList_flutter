@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_list/model/task_data.dart';
 
 import 'screens/task_screen.dart';
 
@@ -11,19 +13,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Task task1 = Task(taskTitle: 'Buy Milk');
-    // Task task2 = Task(taskTitle: 'Buy Eggs');
-    // Task task3 = Task(taskTitle: 'Buy Bread', isChecked: true);
-
-    // ListOfTasks listOfTasks = ListOfTasks();
-    // listOfTasks.taskList.add(task1);
-    // listOfTasks.taskList.add(task2);
-    // listOfTasks.taskList.add(task3);
-
-    return MaterialApp(
-      home: TaskScreen(
-          // listOfTasks: listOfTasks,
-          ),
+    return ChangeNotifierProvider(
+      // builder: (context) => TaskData(),
+      create: (context) => TaskData(),
+      child: MaterialApp(
+        home: TaskScreen(),
+      ),
     );
   }
 }
